@@ -9,6 +9,9 @@ const Counter = () => {
   //인자로 리덕스가 관리하는 상태를 받는 함수전달하여 추출하려는 상태를 반환받기
   const counter = useSelector((state) => state.counter);
 
+  //새로운 showCounter 상태에 접근하기 위해 useSelector()로 데이터 가져오기
+  const isShow = useSelector((state) => state.showCounter);
+
   //3. 핸들러에서 디스패치 호출하여 타입별 액션(type을 가진 오브젝트) 발송
   const incrementHandler = () => {
     dispatch({ type: "increment" });
@@ -25,12 +28,15 @@ const Counter = () => {
     dispatch({ type: "decrease", amount: 5 });
   };
 
-  const toggleCounterHandler = () => {};
+  //toggleCounterHandler 핸들러에 toggle 액션 디스패치
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {isShow && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>
