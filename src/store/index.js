@@ -9,6 +9,13 @@ const counterReducer = (state, action) => {
   if (action.type === "decrement") {
     return { counter: state.counter - 1 };
   }
+  //액션의 페이로드 사용하여 확장가능하게 하기
+  if (action.type === "increase") {
+    return { counter: state.counter + action.amount };
+  }
+  if (action.type === "decrease") {
+    return { counter: state.counter - action.amount };
+  }
   return {
     counter: 0,
   };

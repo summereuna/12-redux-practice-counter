@@ -17,6 +17,14 @@ const Counter = () => {
     dispatch({ type: "decrement" });
   };
 
+  //핸들러에서는 여전히 하드 코딩으로 속성값을 고정하여 보내지만 이 부분을 사용자 입력 값으로 바꾸면 좀 더 확장가능함
+  const increaseHandler = () => {
+    dispatch({ type: "increase", amount: 5 });
+  };
+  const decreaseHandler = () => {
+    dispatch({ type: "decrease", amount: 5 });
+  };
+
   const toggleCounterHandler = () => {};
 
   return (
@@ -27,6 +35,11 @@ const Counter = () => {
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>
       </div>
+      <div>
+        <button onClick={increaseHandler}>+ Increase by 5</button>
+        <button onClick={decreaseHandler}>- Decrease by 5</button>
+      </div>
+
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );
