@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
+
+import { counterActions } from "../store/index";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
@@ -14,23 +16,28 @@ const Counter = () => {
 
   //3. 핸들러에서 디스패치 호출하여 타입별 액션(type을 가진 오브젝트) 발송
   const incrementHandler = () => {
-    dispatch({ type: "increment" });
+    dispatch(counterActions.increment());
+    //{ type: "increment" } 반환됨
   };
+
   const decrementHandler = () => {
-    dispatch({ type: "decrement" });
+    dispatch(counterActions.decrement());
+    //{ type: "decrement" } 반환됨
   };
 
-  //핸들러에서는 여전히 하드 코딩으로 속성값을 고정하여 보내지만 이 부분을 사용자 입력 값으로 바꾸면 좀 더 확장가능함
   const increaseHandler = () => {
-    dispatch({ type: "increase", amount: 5 });
-  };
-  const decreaseHandler = () => {
-    dispatch({ type: "decrease", amount: 5 });
+    dispatch(counterActions.increase(5));
+    //{ type: "increase", payload: 5 } 반환됨
   };
 
-  //toggleCounterHandler 핸들러에 toggle 액션 디스패치
+  const decreaseHandler = () => {
+    dispatch(counterActions.decrease(5));
+    //{ type: "decrease", payload: 5 } 반환됨
+  };
+
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    dispatch(counterActions.toggleCounter());
+    //{ type: "toggle" } 반환됨
   };
 
   return (
