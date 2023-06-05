@@ -9,10 +9,10 @@ const Counter = () => {
 
   //1. useSelector() 호출하여 컴포넌트에 리덕스 스토어 데이터 가져오기
   //인자로 리덕스가 관리하는 상태를 받는 함수전달하여 추출하려는 상태를 반환받기
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector((state) => state.counter.counter);
 
   //새로운 showCounter 상태에 접근하기 위해 useSelector()로 데이터 가져오기
-  const isShow = useSelector((state) => state.showCounter);
+  const isShow = useSelector((state) => state.counter.showCounter);
 
   //3. 핸들러에서 디스패치 호출하여 타입별 액션(type을 가진 오브젝트) 발송
   const incrementHandler = () => {
